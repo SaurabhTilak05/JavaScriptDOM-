@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #4dadfb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           
+        }
+        button{
+            height: 40px;
+            width: 30%;
+            border: none;
+            border-radius: 20px;
+            
+        }
+        #output{
+            height: 50px;
+            width: 300px;
+            display: flex;
+            border: none;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            background:linear-gradient(to top, rgb(44, 120, 227), rgb(219, 44, 44), rgb(34, 103, 207))
+            
+        }
+        .container{
+            height: 500px;
+            width: 700px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            color: aliceblue;
+            background: linear-gradient(to top, rgb(246, 69, 69), orange, yellow);
+        }
+        .main
+        {
+            display: flex;
+             flex-wrap: wrap;
+             gap: 10px;
+            justify-content: center;
+            align-items: center;
+            color: aliceblue;   
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+            <div class="main">
+                <button onclick="sumOfDigit()"> SumOfDigits</button>
+                <button onclick="ReverseNum()">ReverseNumber</button>
+                <button  onclick="palindromNum()">CheckPalindrome</button>
+                <button  onclick="CheckPrime()">CheckPrime</button>
+                <button  onclick="CheckArmstrong()">CheckArmstrong</button>
+                <button  onclick="StrongNum()">CheckStrongNum</button>
+            </div>
+        <div id="output"> <label for="output" >Result</label></div>
+     </div>
+     <script type="text/JavaScript">
+
+        function getNumber() {
+            let input = prompt("Enter a number:");
+            if (input === null || input.trim() === "") {
+                return null; 
+            }
+            const num = parseInt(input);
+            if (isNaN(num)) {
+                alert("enter a valid number.");
+                return null;
+            }
+            return num;
+        }
+
+        function sumOfDigit() {
+           let i=getNumber();
+           const num=i;
+           let sum=0;
+           let temp=num;
+           while(temp>0){
+            sum+=temp%10;
+            temp=parseInt(temp/10);
+           }
+           document.getElementById("output").innerHTML=sum;
+        }
+
+        
+        function palindromNum() {
+            let i=getNumber();
+            const num=i;
+            let temp=num;
+            let rev=0;
+            while(temp>0)
+            { 
+                let rem=temp%10;
+                rev=rev*10+rem;
+                temp=parseInt(temp/10);
+            }
+            if(num==rev)
+            {
+                document.getElementById("output").innerHTML="Palindrome";
+            }
+            else
+            {
+                 document.getElementById("output").innerHTML="Not Palindrome";
+            } 
+        }
+
+        function ReverseNum()
+        {
+            let i=getNumber();
+            let num=i;
+            let rev=0;
+            while(num>0)
+            {
+                let rem=num%10;
+                rev=rev*10+rem;
+                num=parseInt(num/10);
+            }
+            document.getElementById("output").innerHTML=rev;
+        }
+
+        function CheckPrime()
+        {
+            let i=getNumber();
+            let num=i;
+            let count=0;
+            for(let k=2;k<=num/2;k++)
+            {
+                if(num%k==0)
+                {
+                    count++;
+                }
+            }
+            if(count==0)
+            {
+                document.getElementById("output").innerHTML="Prime";
+            }
+            else{
+                document.getElementById("output").innerHTML="Not Prime";
+            }
+        }
+
+        function CheckArmstrong(){
+            let orignal=getNumber();
+            let no=orignal;
+            let count=0;
+            let sum=0;
+            if(no===0)
+            {
+                count=1;
+            }
+            else{
+                while(no>0)
+                {
+                    no=parseInt(no/10);
+                    count++;
+                }
+            }
+                no=orignal;
+                while (no>0) {
+                    let rem=parseInt(no%10);
+                    let sq=1;
+                    for(let i=1;i<=count;i++)
+                    {
+                        sq=sq*rem;
+                    }
+                    sum+=sq;
+                    no=parseInt(no/10);
+                }
+                if(sum==orignal)
+                {
+                    document.getElementById("output").innerHTML="Armstromg Number";
+                }
+                else{
+                    document.getElementById("output").innerHTML="Not Armstrong";
+                }
+        }
+
+        function StrongNum(){
+            let original=getNumber();
+            let no=original;
+            let sum=0;
+            while (no>0) {
+                let rem=no%10;
+                sum+=factorial(rem);
+                no=parseInt(no/10);
+            }
+            if(sum==original)
+            {
+                document.getElementById("output").innerHTML="Strong Number";
+            }
+            else{
+                document.getElementById("output").innerHTML="Not Strong Number";
+            }
+        }
+        function factorial(no) {
+                let fact=1;
+                for(let i=1;i<=no;i++)
+                {
+                    fact*=i;
+                }
+                return fact;
+            }
+    </script>
+    
+</body>
+</html>
