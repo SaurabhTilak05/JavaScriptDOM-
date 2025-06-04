@@ -10,7 +10,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* flex-direction: column; */
+           
         }
         button{
             height: 40px;
@@ -64,6 +64,7 @@
         <div id="output"> <label for="output" >Result</label></div>
      </div>
      <script type="text/JavaScript">
+        
         function getNumber() {
             let input = prompt("Enter a number:");
             if (input === null || input.trim() === "") {
@@ -76,8 +77,9 @@
             }
             return num;
         }
+
         function sumOfDigit() {
-            let i=getNumber();
+           let i=getNumber();
            const num=i;
            let sum=0;
            let temp=num;
@@ -87,6 +89,7 @@
            }
            document.getElementById("output").innerHTML=sum;
         }
+
         function palindromNum() {
             let i=getNumber();
             const num=i;
@@ -107,6 +110,7 @@
                  document.getElementById("output").innerHTML="Not Palindrome";
             } 
         }
+
         function ReverseNum()
         {
             let i=getNumber();
@@ -120,6 +124,7 @@
             }
             document.getElementById("output").innerHTML=rev;
         }
+
         function CheckPrime()
         {
             let i=getNumber();
@@ -176,7 +181,6 @@
                     document.getElementById("output").innerHTML="Not Armstrong";
                 }
         }
-
 
         function StrongNum(){
             let original=getNumber();
